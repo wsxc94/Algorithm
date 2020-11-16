@@ -1,30 +1,22 @@
 #include <iostream>
-
 using namespace std;
+#define MOD 10007
 
-#define MAX_DP 1020
+int dp[1001];
 
 int main() {
-	
-	ios::sync_with_stdio(false), cin.tie(NULL);
+	ios::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL);
 
 	int n, k;
-
 	cin >> n >> k;
 
-	int mat[MAX_DP][MAX_DP] = { 0, };
+	dp[0] = dp[1] = 1;
 
-	mat[1][1] = 1;
-
-	for (int i = 2; i <= n + 1; i++)
-	{
-		for (int j = 1; j <= n + 1; j++)
-		{
-			mat[i][j] = (mat[i - 1][j] + mat[i - 1][j - 1]) % 10007;
-
+	for (int i = 2; i <= n; i++) {
+		for (int j = k; j >= 1; j--) {
+			dp[j] = dp[j - 1] % MOD + dp[j] % MOD;
+			dp[j] %= MOD;
 		}
 	}
-
-	cout << mat[n + 1][k + 1] << "\n";
-	return 0;
+	cout << dp[k];
 }
