@@ -37,7 +37,6 @@ void quad(int x , int y , int size) {
 		ans += ")";
 	}
 
-	
 }
 
 int main() {
