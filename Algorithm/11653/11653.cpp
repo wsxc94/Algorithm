@@ -1,8 +1,11 @@
 #include<stdio.h>
+#include <iostream>
+using namespace std;
+
 int main()
 {
 	int n, i, j;
-	scanf("%d", &n);
+	cin >> n;
 	for (i = 2; i*i <= n; i++)
 	{
 		while (n%i == 0)
