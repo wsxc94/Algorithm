@@ -12,6 +12,7 @@ long long int pow(long long int a, long long int b) {
 
 	long long int half = pow(a, b / 2);
 	half %= c;
+
 	return (half*half) % c;
 
 }
