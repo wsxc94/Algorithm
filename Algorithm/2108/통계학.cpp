@@ -8,12 +8,13 @@ using namespace std;
 
 int main() {
 
+	ios::sync_with_stdio(false), cout.tie(0), cin.tie(0);
 	int n;
 	cin >> n;
 
 	vector<int> v(n);
 	unordered_map<int, int> m;
-	float sum = 0;
+	double sum = 0;
 	int maxIdx = 0, max = 0;
 	
 	for (int i = 0; i < n; i++)
@@ -42,11 +43,8 @@ int main() {
 	}
 	sort(tmp.begin(), tmp.end());
 
-	cout << round(sum / n) << "\n";
-	if (n % 2 == 0)
-		cout << v[(n / 2) - 1] << "\n";
-	else
-		cout << v[n / 2 + 1] << "\n";
+	cout << round(sum / (double)n) << "\n";
+	cout << v[round(n/2)] << "\n";
 	if (cnt > 1)
 		cout << tmp[1] << "\n";
 	else
