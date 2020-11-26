@@ -14,6 +14,7 @@ int main() {
 
 	vector<int> v(n);
 	unordered_map<int, int> m;
+
 	double sum = 0;
 	int maxIdx = 0, max = 0;
 	
