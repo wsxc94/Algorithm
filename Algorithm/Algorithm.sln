@@ -111,6 +111,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "level2수식최대화", "le
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "15650", "15650\15650.vcxproj", "{135CB6D9-29A6-4061-9F5F-6DA9E801CF5F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "15651", "15651\15651.vcxproj", "{4CD97346-FB57-462B-82AD-401AE3D9E520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -551,6 +553,14 @@ Global
 		{135CB6D9-29A6-4061-9F5F-6DA9E801CF5F}.Release|x64.Build.0 = Release|x64
 		{135CB6D9-29A6-4061-9F5F-6DA9E801CF5F}.Release|x86.ActiveCfg = Release|Win32
 		{135CB6D9-29A6-4061-9F5F-6DA9E801CF5F}.Release|x86.Build.0 = Release|Win32
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Debug|x64.ActiveCfg = Debug|x64
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Debug|x64.Build.0 = Debug|x64
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Debug|x86.ActiveCfg = Debug|Win32
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Debug|x86.Build.0 = Debug|Win32
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Release|x64.ActiveCfg = Release|x64
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Release|x64.Build.0 = Release|x64
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Release|x86.ActiveCfg = Release|Win32
+		{4CD97346-FB57-462B-82AD-401AE3D9E520}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
