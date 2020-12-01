@@ -1,45 +1,37 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int n, min_num = 999999999;
+int n;
 int mat[21][21];
-bool ch[21] = { false, };
 
-void dfs(int cnt , int idx) {
+vector<int> start, link;
+
+int dfs(int idx , int start_score , int link_score){
+
+	if (idx == n) return abs(start_score - link_score);
 	
-	if (cnt == n/2) {
-		int start_score = 0, link_score = 0;
-		vector<int> start, link;
-		start.reserve(n + 1);
-		link.reserve(n + 1);
-		for (int i = 0; i < n; i++)
-		{
-			if (ch[i]) start.push_back(i);
-			else link.push_back(i);
-		}
-		for (int i = 0; i < n/2; i++)
-		{
-			for (int j = 0; j < n/2; j++)
-			{
-				start_score += mat[start[i]][start[j]];
-				link_score += mat[link[i]][link[j]];
-
-			}
-		}
-		if (abs(start_score - link_score) < min_num)
-			min_num = abs(start_score - link_score);
-		return;
-	}
-
-	for (int i = idx; i < n; i++)
+	int ans = 999999999;
+	if (start.size() != n / 2)
 	{
-		if (ch[i]) continue;
-
-		ch[i] = true;
-		dfs(cnt + 1, i);
-		ch[i] = false;
+		start.push_back(idx);
+		int score = start_score;
+		for (int i : start) score += mat[i][idx] + mat[idx][i];
+		ans = min(ans, dfs(idx + 1, score, link_score));
+		start.pop_back();
 	}
+	if (link.size() != n / 2)
+	{
+		link.push_back(idx);
+		int score = link_score;
+		for (int i : link) score += mat[i][idx] + mat[idx][i];
+		ans = min(ans, dfs(idx + 1, start_score, score));
+		link.pop_back();
+	}
+
+	return ans;
 
 }
 int main() {
@@ -55,8 +47,7 @@ int main() {
 		}
 	}
 
-	dfs(0, 0);
+	cout << dfs(0, 0, 0);
 
-	cout << min_num << "\n";
 	return 0;
 }
