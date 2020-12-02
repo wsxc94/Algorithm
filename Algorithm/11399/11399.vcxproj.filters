@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="회의실배정.cpp">
+    <ClCompile Include="ATM.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
