@@ -33,7 +33,7 @@ int main() {
 
 	vector<int> mat(n, 0);
 
-	dfs(0,mat);
+	dfs(0, mat);
 
 	cout << answer << "\n";
 
