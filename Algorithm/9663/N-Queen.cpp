@@ -25,7 +25,6 @@ void dfs(int idx , vector<int>& mat) {
 			if (check(idx , mat)) dfs(idx + 1 , mat);
 		}
 	}
-
 }
 int main() {
 	ios::sync_with_stdio(false), cout.tie(0), cin.tie(0);
