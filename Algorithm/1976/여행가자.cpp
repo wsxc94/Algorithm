@@ -16,7 +16,6 @@ int Find(int v) {
 	return unf[v] = Find(unf[v]);
 }
 void Union(int a, int b) {
-	
 	a = Find(a);
 	b = Find(b);
 	if (a == b) return;
