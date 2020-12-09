@@ -7,7 +7,7 @@ using namespace std;
 constexpr int MAX_NUM = 20001;
 constexpr int INF = 987654321;
 
-vector<pair<int, int>> vertex[MAX_NUM];
+vector<pair<int, int>> pos[MAX_NUM];
 vector<int> dist(MAX_NUM, INF);
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
 	for (int i = 0; i < m; i++)
 	{
 		cin >> a >> b >> c;
-		vertex[a].push_back({ b,c });
+		pos[a].push_back({ b,c });
 	}
 	priority_queue<pair<int, int> , vector<pair<int,int>> , greater<pair<int,int>>> q;
 	q.push(make_pair(0, start));
@@ -32,10 +32,10 @@ int main() {
 		int idx = q.top().second;
 		q.pop();
 
-		for (int i = 0; i < vertex[idx].size(); i++)
+		for (int i = 0; i < pos[idx].size(); i++)
 		{
-			int next = vertex[idx][i].first;
-			int nCost = vertex[idx][i].second;
+			int next = pos[idx][i].first;
+			int nCost = pos[idx][i].second;
 
 			if (dist[next] > cost + nCost) {
 				dist[next] = cost + nCost;

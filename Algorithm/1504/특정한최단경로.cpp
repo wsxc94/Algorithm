@@ -13,7 +13,7 @@ constexpr int MAX_NUM = 8001;
 constexpr int INF = 987654321;
 
 vector<int> dist(MAX_NUM, INF);
-vector<pair<int, int>> vertex[MAX_NUM];
+vector<pair<int, int>> pos[MAX_NUM];
 priority_queue<pair<int, int>> q;
 
 int main() {
