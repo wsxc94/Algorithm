@@ -233,6 +233,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "15686", "15686\15686.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "에디터", "에디터\에디터.vcxproj", "{50E7A9CA-10EB-4501-85AA-9E34EE6A1B58}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1912", "1912\1912.vcxproj", "{76A64E5D-2DC2-4F0A-95EE-DBC292322027}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -1161,6 +1163,14 @@ Global
 		{50E7A9CA-10EB-4501-85AA-9E34EE6A1B58}.Release|x64.Build.0 = Release|x64
 		{50E7A9CA-10EB-4501-85AA-9E34EE6A1B58}.Release|x86.ActiveCfg = Release|Win32
 		{50E7A9CA-10EB-4501-85AA-9E34EE6A1B58}.Release|x86.Build.0 = Release|Win32
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Debug|x64.ActiveCfg = Debug|x64
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Debug|x64.Build.0 = Debug|x64
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Debug|x86.ActiveCfg = Debug|Win32
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Debug|x86.Build.0 = Debug|Win32
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Release|x64.ActiveCfg = Release|x64
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Release|x64.Build.0 = Release|x64
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Release|x86.ActiveCfg = Release|Win32
+		{76A64E5D-2DC2-4F0A-95EE-DBC292322027}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
