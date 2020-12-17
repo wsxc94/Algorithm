@@ -24,7 +24,7 @@ int main() {
 	cin >> m;
 
 	int l = 0, r = limit, mid;
-
+	
 	while (l <= r)
 	{
 		mid = (l + r) / 2;
