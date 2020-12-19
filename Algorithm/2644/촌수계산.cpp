@@ -20,7 +20,6 @@ int bfs(int start , int target) {
 	{
 		int pos = q.front();
 		q.pop();
-
 		if (pos == target) return dist[target];
 
 		for (int i = 0; i < mat[pos].size(); i++)
