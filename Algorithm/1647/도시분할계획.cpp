@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <string>
 #include <string.h>
-
+#include <algorithm>
 using namespace std;
 
 int n, m;
@@ -24,7 +24,7 @@ struct Edge
 		return val < b.val;
 	}
 };
-int unf[100002];
+int unf[100001];
 vector<Edge> ed;
 
 int Find(int v) {
@@ -53,8 +53,6 @@ int main() {
 		unf[i] = i;
 	}
 
-	ed.reserve(m+1);
-
 	int a, b, c;
 	for (int i = 0; i < m; i++)
 	{
@@ -62,17 +60,19 @@ int main() {
 		ed.push_back(Edge(a, b, c));
 	}
 
+	ed.reserve(m + 1);
 	sort(ed.begin(), ed.end());
 
 	int ans = 0, cnt = 0;
 
 	for (int i = 0; i < ed.size(); i++)
 	{
-		if (cnt == n - 1) break;
+		if (cnt == n - 2) break;
 		auto cur = ed[i];
 		if (Find(cur.v1) != Find(cur.v2)) {
-			ans += cur.val;
+			
 			Union(cur.v1, cur.v2);
+			ans += cur.val;
 			cnt++;
 		}
 		
