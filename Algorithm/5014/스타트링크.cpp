@@ -22,17 +22,17 @@ int bfs() {
 		int qSize = q.size();
 		for (int i = 0; i < qSize; i++)
 		{
-			int present = q.front(); q.pop();
+			int cur = q.front(); q.pop();
 
-			if (present == G) return res;
+			if (cur == G) return res;
 
-			int next = present + U;
+			int next = cur + U;
 			if (1 <= next && next <= F && !ch[next])
 			{
 				ch[next] = true;
 				q.push(next);
 			}
-			next = present - D;
+			next = cur - D;
 			if (1 <= next && next <= F && !ch[next])
 			{
 				ch[next] = true;
@@ -49,7 +49,6 @@ int main() {
 	//전체층 현재 스타트링크 위로몇층 아래로몇충
 	cin >> F >> S >> G >> U >> D;
 
-	
 	int ans = bfs();
 
 	if (ans == -1) cout << "use the stairs\n";
