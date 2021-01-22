@@ -1,62 +1,101 @@
-#include <iostream>
-#include <queue>
-#include <vector>
-#include <map>
-#include <unordered_map>
 #include <string>
+#include <vector>
+#include <iostream>
 #include <string.h>
-#include <algorithm>
-#include <cstring>
-
 using namespace std;
 
-struct Trie
+
+const int NUM = 27;
+
+int toNumber(char n) {
+	if (n == '?')
+	{
+		return 26;
+	}
+
+	return n - 'a';
+}
+
+struct TrieNode
 {
+	TrieNode* children[NUM];
+	bool terminal;
 	int cnt;
-	bool term;
-	Trie* next[26];
 
-	Trie() : term(false) , cnt(1) {
-		memset(next, 0, sizeof(next));
-	}
-	~Trie() {
-		for (int i = 0; i < 26; i++)
+	TrieNode() :terminal(false), cnt(0)
+	{
+		for (int i = 0; i < NUM; ++i)
 		{
-			if (next[i]) delete next[i];
+			children[i] = NULL;
 		}
 	}
 
-	void insert(const char* key) {
-		if (*key == '\0') term = true;
-		else {
-			int cur = *key - 'a';
-			if (next[cur] == NULL) next[cur] = new Trie();
-			else next[cur]->cnt++;
-
-			next[cur]->insert(key + 1);	
-		}
-	}
-
-	int find(const char* key) {
-		int cur = *key - 'a';
-		if (*key == '?') {
-			int tmp = 0;
-			for (int i = 0; i < 26; i++)
+	~TrieNode()
+	{
+		for (int i = 0; i < NUM; i++)
+		{
+			if (children[i])
 			{
-				if (next[i] != NULL) tmp += next[i]->cnt;
+				delete children[i];
 			}
-			return tmp;
 		}
-
-		if (next[cur] == NULL) return 0;
-		if (*(key + 1) == '?') return next[cur]->cnt;
-		return next[cur]->find(key + 1);
 	}
 
-};
+	void insert(const char* key)
+	{
+		//키값이 널이라면
+		if (*key == 0)
+		{
+			terminal = true;
+		}
+		else
+		{
+			int next = toNumber(*key);
+			if (children[next] == NULL)
+			{
+				children[next] = new TrieNode();
+			}
 
-Trie *root[10001];
-Trie *reRoot[10001];
+			children[next]->insert(key + 1);
+		}
+	}
+
+	void find(const char* key)
+	{
+		if (*key == 0)
+		{
+			cnt++;
+			return;
+		}
+
+		int next = toNumber(*key);
+		if (children[toNumber('?')] != NULL)
+		{
+			children[toNumber('?')]->find(key + 1);
+		}
+
+		if (children[next] != NULL)
+		{
+			children[next]->find(key + 1);
+		}
+	}
+
+	int getCnt(const char* key)
+	{
+		if (*key == 0)
+		{
+			return cnt;
+		}
+
+		int next = toNumber(*key);
+		if (children[next] == NULL)
+		{
+			return 0;
+		}
+
+		return children[next]->getCnt(key + 1);
+	}
+};
 
 int main() {
 	ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
@@ -65,48 +104,23 @@ int main() {
 
 	vector<string> queries = { "fro??" , "????o" , "fr???" , "fro???" , "pro?" };
 	
+	vector<int> answer;
 
-	int wsize = words.size();
-	int qsize = queries.size();
-	vector<int> answer(qsize, 0);
-	
-	for (string &w : words)
+	TrieNode trie;
+
+	for (int i = 0; i < queries.size(); ++i)
 	{
-		int len = w.size();
-
-		const char* c = w.c_str();
-		if (root[len] == NULL) root[len] = new Trie();
-		root[len]->insert(c);
-
-		string reverse = w;
-		std::reverse(w.begin(), w.end());
-
-		const char* k = w.c_str();
-		if (reRoot[len] == NULL) reRoot[len] = new Trie();
-		reRoot[len]->insert(k);
+		trie.insert(queries[i].c_str());
 	}
 
-	int idx = 0;
-
-	for (string &q : queries)
+	for (int i = 0; i < words.size(); ++i)
 	{
-		int len = q.size();
+		trie.find(words[i].c_str());
+	}
 
-		if (q[len - 1] == '?') {
-			const char* c = q.c_str();
-
-			if (root[len] == NULL) { idx++; continue; }
-			else answer[idx] = root[len]->find(c);
-		}
-		else {
-			string re = q;
-			std::reverse(re.begin(), re.end());
-			const char *k = re.c_str();
-
-			if (reRoot[len] == NULL) { idx++; continue; }
-			else answer[idx] = reRoot[len]->find(k);
-		}
-		idx++;
+	for (int i = 0; i < queries.size(); ++i)
+	{
+		answer.push_back(trie.getCnt(queries[i].c_str()));
 	}
 
 	for (auto a : answer)
